@@ -69,3 +69,122 @@ router.patch("/transfer", async (req, res) => {
 });
 
 module.exports = router;
+
+/**
+ * @swagger
+ * /deposit:
+ *   post:
+ *     summary: Deposit amount to account
+ *     description: Endpoint to deposit an amount to a bank account
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
+ *                 description: The amount to be deposited
+ *               accountNumber:
+ *                 type: string
+ *                 description: The account number to which the amount will be deposited
+ *     responses:
+ *       '201':
+ *         description: Account created successfully or amount credited successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Account created successfully or Account credited successfully
+ *                 payload:
+ *                   type: object
+ *                   description: The account details with updated balance
+ *       '400':
+ *         description: Invalid input or bad request
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Invalid input or Bad request
+ *       '500':
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Internal server error
+ * /transfer:
+ *   patch:
+ *     summary: Transfer amount between accounts
+ *     description: Endpoint to transfer an amount between two bank accounts
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
+ *                 description: The amount to be transferred
+ *               senderId:
+ *                 type: string
+ *                 description: The account number of the sender
+ *               receiverId:
+ *                 type: string
+ *                 description: The account number of the receiver
+ *               gatewayId:
+ *                 type: string
+ *                 description: The gateway identifier for authorization
+ *     responses:
+ *       '200':
+ *         description: Transaction processed successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Transaction processed successfully
+ *       '400':
+ *         description: Bad request or unavailable account or inadequate finance
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Bad request or Unavailable account or Inadequate finance
+ *       '401':
+ *         description: Unauthorized gateway
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   example: Unauthorized gateway
+ *       '500':
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Internal server error
+ */
