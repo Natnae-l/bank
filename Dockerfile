@@ -12,7 +12,7 @@ ENV gatewayId=122123 \
     port=5000 \
     db="mongodb+srv://Natnael:e840qPAaOMYxgeSC@cluster0.vs0kmkg.mongodb.net/one-tap?retryWrites=true&w=majority&appName=Cluster0" \
     secretJWT="sc$nc483nr4#z" \
-    serverUrl="http://localhost:4000"
+    serverUrl="http://localhost:5000"
 
 EXPOSE 5000
 
